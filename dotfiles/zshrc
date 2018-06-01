@@ -1,0 +1,47 @@
+# Oh My Zsh
+ZSH=$HOME/.oh-my-zsh
+machine="somebox"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# Alias
+alias ll='ls -lah'
+alias editzshrc='vim ~/.zshrc'
+alias sourcezshrc='source ~/.zshrc'
+alias boostrap-home='~/code/dotfiles/bootstrap'
+
+# Exports
+export EDITOR='vim'
+export GREP_OPTIONS='--color=auto'
+export DISABLE_LS_COLORS="false"
+export DISABLE_AUTO_UPDATE=true
+export GOPATH=$HOME/code/go
+export ZSHRC=$HOME/.zshrc
+export machine=homebox
+
+# Setting up command line promopt to look like: feeneyj in ~/code on laptop git:(master)
+export PROMPT='%{$fg_bold[red]%}$USER %{$reset_color%}%{$fg[white]%}in %{$reset_color%}%{$fg_bold[blue]%}%c %{$reset_color%}%{$fg[white]%}on %{$reset_color%}%{$fg_bold[yellow]%}$machine %{$reset_color%}$(git_prompt_info)'
+export ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}at %{$reset_color%}%{$fg_bold[blue]%}\uE0A0 %{$fg[red]%}"
+export ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+export ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%} %{$fg[yellow]%}✗"
+export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
+
+# Ruby
+if which rbenv > /dev/null; then
+  export RBENV_ROOT=/usr/local/var/rbenv
+  eval "$(rbenv init -)";
+fi
+
+## Python
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Path
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=$HOME/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:$GOPATH/bin
+export PATH="~/.pyenv/bin:$PATH"
+export PATH=$(python -m site --user-base)/bin:$PATH

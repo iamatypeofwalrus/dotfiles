@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Get directory of this script
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+for f in `ls -p $DIR/dotfiles | grep -v /`
+do
+  src=$DIR/dotfiles/$f
+  dest=~/.$f
+  rm $dest
+  cp $src $dest
+done 
+
+# Special cases
+cp $DIR/dotfiles/ssh/config ~/.ssh/config

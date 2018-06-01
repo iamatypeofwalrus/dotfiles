@@ -1,0 +1,5 @@
+[user]
+        name = Joe Feeney
+        email = joe@glasswaves.co
+[core]
+        excludesfile = ~/.gitignore_global
