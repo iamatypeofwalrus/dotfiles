@@ -26,6 +26,12 @@ export ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 export ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%} %{$fg[yellow]%}✗"
 export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
 
+# Path
+export PATH=$HOME/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:$GOPATH/bin
+
 # Ruby
 if which rbenv > /dev/null; then
   export RBENV_ROOT=/usr/local/var/rbenv
@@ -37,10 +43,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# Path
-export PATH=$HOME/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:$GOPATH/bin
 export PATH="~/.pyenv/bin:$PATH"
 export PATH=$(python -m site --user-base)/bin:$PATH
