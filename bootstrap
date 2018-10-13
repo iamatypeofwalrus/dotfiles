@@ -1,5 +1,84 @@
 #!/usr/bin/env sh
+echo "installing prerequisites for a sane environment..."
 
+dev_dir=~/code
+mkdir -p $dev_dir
+mkdir -p ~/bin
+
+mac_fonts_dir=~/Library/Fonts
+git_fonts_dir=$dev_dir/fonts
+
+if [ -x "$(command -v brew)" ]
+then
+  echo "brew is already installed. Updating..."
+  brew update >> /dev/null
+else
+  echo "Brew is not installed. Installing..."
+
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+if [ -x "$(command -v jq)" ]
+then
+  echo "jq is already installed"
+else
+  echo "jq is not installed. Installing..."
+  brew install jq
+fi
+
+if [ -d ~/.oh-my-zsh ]
+then
+  echo "oh-my-zsh is already installed"
+else
+  echo "oh-my-zsh not installed. Installing..."
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
+if [ -d "$dev_dir/dotfiles" ]
+then
+  echo "dot files repo is already installed"
+else
+  echo "Couldn't find dot files repo in $dev_dir/dotfiles. Cloning..."
+
+  git clone https://github.com/iamatypeofwalrus/dotfiles.git
+
+  cd $dev_dir/dotfiles
+fi
+
+if [ -f ~/.secrets ]
+then
+  echo "secrets file already exists"
+else
+  echo "Creating ~/.secrets file..."
+  touch ~/.secrets
+fi
+
+if [ -d "$git_fonts_dir/Menlo-for-Powerline" ]
+then
+  echo "Menlo-for-Powerline is already installed"
+else
+  echo "Menlo-for-Powerline is not installed. Installing..."
+  git clone https://github.com/abertsch/Menlo-for-Powerline $git_fonts_dir/Menlo-for-Powerline
+  cp $git_fonts_dir/Menlo-for-Powerline/*.ttf $mac_fonts_dir
+fi
+
+if [ -d "$git_fonts_dir/powerline" ]
+then
+  echo "SourceCodePro for Powerline font is already installed"
+else
+  echo "SourceCodePro for Powerline is not installed. Installing..."
+  git clone https://github.com/powerline/fonts.git $git_fonts_dir/powerline
+  cp $git_fonts_dir/powerline/SourceCodePro/*.otf $mac_fonts_dir
+fi
+
+# TODO
+# rbenv
+# pyenv
+# aws cli
+# golang
+
+## Copying Dotfiles
+echo "copying dotfiles..."
 # Get directory of this script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -13,3 +92,7 @@ done
 
 # Special cases
 cp $DIR/dotfiles/ssh/config ~/.ssh/config
+
+## Git
+echo "configuring gitignore global"
+git config --global core.excludesfile ~/.gitignore_global

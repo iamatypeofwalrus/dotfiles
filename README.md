@@ -1,13 +1,18 @@
 # dotfiles
-
-```
+```sh
 ./bootstrap
 ```
 
-## New Laptop Setup
+## Prerequisites
+* Download Xcode from the App Store
+* Install developer tools `xcode-select --install`
+
+## Applications
+### System Preferences
+* Map Caps Lock to Control
+### VS Code
 * [VS Code](https://code.visualstudio.com)
 * [Install Dracula theme for VS Code](https://github.com/dracula/visual-studio-code)
+### Terminal
 * [Install Dracula theme for Terminal](https://github.com/dracula/terminal-app)
-* [Install Menlo for Powerline](https://github.com/abertsch/Menlo-for-Powerline)
-* [Install Source Code Powerline fonts](https://github.com/powerline/fonts.git)
-* Map Caps Lock to Control
+* set font to `Menlo Regular for Powerline` @ 14pt
