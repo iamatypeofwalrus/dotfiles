@@ -4,7 +4,7 @@ Setup a new Mac
 ## TODO
 * VS Code settings
 
-## Prerequisites
+## Pre bootstrap
 * Download Xcode from the App Store
 * Install developer tools `xcode-select --install`
 ### VS Code
