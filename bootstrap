@@ -1,9 +1,17 @@
 #!/usr/bin/env sh
+set -e
+
 echo "bootstraping..."
 
 dev_dir=~/code
 mac_fonts_dir=~/Library/Fonts
 git_fonts_dir=$dev_dir/fonts
+
+MAC_OS_VERSION=$(sw_vers | grep ProductVersion | awk '{print $2}' | awk -F. '{print $2}')
+MAC_OS_HIGH_SIERRA=13
+
+# Get directory of this script
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 mkdir -p $dev_dir
 mkdir -p ~/bin
@@ -18,8 +26,7 @@ fi
 
 if [ -x "$(command -v brew)" ]
 then
-  echo "brew is already installed. Updating..."
-  brew update >> /dev/null
+  echo "brew is already installed"
 else
   echo "brew is not installed. Installing..."
 
@@ -34,6 +41,7 @@ else
   brew install jq
 fi
 
+## Ruby
 if [ -d ~/.rbenv ]
 then
   echo "rbenv is already installed"
@@ -42,6 +50,7 @@ else
   brew install rbenv
 fi
 
+## Python
 if [ -d ~/.pyenv ]
 then
   echo "pyenv is already installed"
@@ -50,7 +59,63 @@ else
   brew install pyenv
 fi
 
-if [ -x "$(command -v go)" ]
+eval "$(pyenv init -)"
+export PATH="~/.pyenv/bin:$PATH"
+export PATH=$(python -m site --user-base)/bin:$PATH
+
+if [ ! -z "$BOOTSTRAP_FORCE" ]
+then
+  # Needed the following brew and installer calls due to a build problem on Mojave
+  # https://github.com/pyenv/pyenv/wiki/Common-build-problems
+  brew install readline xz
+
+  if [ "$MAC_OS_VERSION" -gt "$MAC_OS_HIGH_SIERRA" ]
+  then
+    sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+  fi
+fi
+
+PYTHON_TWO_LATEST=$(pyenv install --list | sed 's/^[[:space:]]*//' | grep "^[2]\.[0-9]\.[0-9]*$" | tail -n 1)
+PYTHON_THREE_LATEST=$(pyenv install --list | sed 's/^[[:space:]]*//' | grep "^[3]\.[0-9]\.[0-9]*$" | tail -n 1)
+
+if pyenv versions | grep $PYTHON_TWO_LATEST >> /dev/null
+then
+  echo "python $PYTHON_TWO_LATEST is already installed"
+else
+  echo "python $PYTHON_TWO_LATEST is not installed. Installing..."
+  pyenv install $PYTHON_TWO_LATEST
+  pyenv rehash
+fi
+
+if pyenv versions | grep $PYTHON_THREE_LATEST >> /dev/null
+then
+  echo "python $PYTHON_THREE_LATEST is already installed"
+else
+  echo "python $PYTHON_THREE_LATEST is not installed. Installing..."
+  pyenv install $PYTHON_THREE_LATEST
+  pyenv rehash
+fi
+
+pyenv global $PYTHON_THREE_LATEST
+
+if command -v pip >> /dev/null
+then
+  echo "pip is already installed"
+else
+  echo "installing pip"
+  easy_install pip
+fi
+
+if command -v aws >> /dev/null
+then
+  echo "aws cli is already installed"
+else
+  echo "aws cli is not installed. Installing..."
+  pip install awscli --user
+fi
+
+## Go
+if command -v go >> /dev/null
 then
   echo "go is already installed"
 else
@@ -90,8 +155,6 @@ else
 fi
 
 echo "replacing existing dotfiles..."
-# Get directory of this script
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 for f in `ls -p $DIR/dotfiles | grep -v /`
 do

@@ -19,20 +19,3 @@ Setup a new Mac
 ### Terminal
 * [Install Dracula theme for Terminal](https://github.com/dracula/terminal-app)
 * set font to `Menlo Regular for Powerline` @ 14pt
-
-### Python
-#### Install the latest versions of Python 2 and 3
-```
-pyenv install --list
-pyenv install YOUR_PYTHON_2
-pyenv install YOUR_PYTHON_3
-pyenv rehash
-pyenv global YOUR_PYTHON_3
-```
-
-### post bootstrap
-Prefer installing the AWS CLI after pyenv is bootstrapped into your zshrc rather than against the system python which is old a.f.
-
-```
-./post-bootstrap
-```
