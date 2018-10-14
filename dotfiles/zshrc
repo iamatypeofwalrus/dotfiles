@@ -8,7 +8,6 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -lah'
 alias editzshrc='vim ~/.zshrc'
 alias sourcezshrc='source ~/.zshrc'
-alias boostrap-home='~/code/dotfiles/bootstrap'
 
 # Exports
 export EDITOR='vim'
@@ -41,7 +40,6 @@ fi
 ## Python
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+  export PATH="~/.pyenv/bin:$PATH"
+  export PATH=$(python -m site --user-base)/bin:$PATH
 fi
-
-export PATH="~/.pyenv/bin:$PATH"
-export PATH=$(python -m site --user-base)/bin:$PATH
