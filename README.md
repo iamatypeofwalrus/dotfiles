@@ -19,3 +19,6 @@ Setup a new Mac
 ### Terminal
 * [Install Dracula theme for Terminal](https://github.com/dracula/terminal-app)
 * set font to `Menlo Regular for Powerline` @ 14pt
+
+## TODO
+* VS Code settings
