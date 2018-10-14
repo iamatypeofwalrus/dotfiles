@@ -1,19 +1,27 @@
 #!/usr/bin/env sh
-echo "installing prerequisites for a sane environment..."
+echo "bootstraping..."
 
 dev_dir=~/code
+mac_fonts_dir=~/Library/Fonts
+git_fonts_dir=$dev_dir/fonts
+
 mkdir -p $dev_dir
 mkdir -p ~/bin
 
-mac_fonts_dir=~/Library/Fonts
-git_fonts_dir=$dev_dir/fonts
+if [ -d ~/.oh-my-zsh ]
+then
+  echo "oh-my-zsh is already installed"
+else
+  echo "oh-my-zsh not installed. Installing..."
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
 if [ -x "$(command -v brew)" ]
 then
   echo "brew is already installed. Updating..."
   brew update >> /dev/null
 else
-  echo "Brew is not installed. Installing..."
+  echo "brew is not installed. Installing..."
 
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
@@ -26,33 +34,31 @@ else
   brew install jq
 fi
 
-if [ -d ~/.oh-my-zsh ]
+if [ -d ~/.rbenv ]
 then
-  echo "oh-my-zsh is already installed"
+  echo "rbenv is already installed"
 else
-  echo "oh-my-zsh not installed. Installing..."
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  echo "rbenv is not installed. Installing..."
+  brew install rbenv
 fi
 
-if [ -d "$dev_dir/dotfiles" ]
+if [ -d ~/.pyenv ]
 then
-  echo "dot files repo is already installed"
+  echo "pyenv is already installed"
 else
-  echo "Couldn't find dot files repo in $dev_dir/dotfiles. Cloning..."
-
-  git clone https://github.com/iamatypeofwalrus/dotfiles.git
-
-  cd $dev_dir/dotfiles
+  echo "pyenv is not installed. Installing..."
+  brew install pyenv
 fi
 
-if [ -f ~/.secrets ]
+if [ -x "$(command -v go)" ]
 then
-  echo "secrets file already exists"
+  echo "go is already installed"
 else
-  echo "Creating ~/.secrets file..."
-  touch ~/.secrets
+  echo "go is not installed. Installing..."
+  brew install go
 fi
 
+## Fonts
 if [ -d "$git_fonts_dir/Menlo-for-Powerline" ]
 then
   echo "Menlo-for-Powerline is already installed"
@@ -71,14 +77,19 @@ else
   cp $git_fonts_dir/powerline/SourceCodePro/*.otf $mac_fonts_dir
 fi
 
-# TODO
-# rbenv
-# pyenv
-# aws cli
-# golang
+##  Dotfiles
+if [ -d "$dev_dir/dotfiles" ]
+then
+  echo "dot files repo is already installed"
+else
+  echo "Couldn't find dot files repo in $dev_dir/dotfiles. Cloning..."
 
-## Copying Dotfiles
-echo "copying dotfiles..."
+  git clone https://github.com/iamatypeofwalrus/dotfiles.git
+
+  cd $dev_dir/dotfiles
+fi
+
+echo "replacing existing dotfiles..."
 # Get directory of this script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
