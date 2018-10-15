@@ -12,6 +12,7 @@ Setup a new Mac
 * [Install Dracula theme for VS Code](https://github.com/dracula/visual-studio-code)
 ### System Preferences
 * Map Caps Lock to Control
+* Map cmd+shift+\ to show notification center
 
 ## bootstrap
 ```
