@@ -160,7 +160,11 @@ for f in `ls -p $DIR/dotfiles | grep -v /`
 do
   src=$DIR/dotfiles/$f
   dest=~/.$f
-  rm $dest
+
+  if [ -f $dest ]; then
+    rm $dest
+  fi
+
   cp $src $dest
 done 
 
