@@ -37,7 +37,7 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
 
-## Python
+# Python
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   export PATH="~/.pyenv/bin:$PATH"

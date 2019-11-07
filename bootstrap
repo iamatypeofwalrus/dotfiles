@@ -123,6 +123,14 @@ else
   brew install go
 fi
 
+if command -v rustc >> /dev/null
+then
+  echo "brew is already installed"
+else
+  echo "rust is not installed, Installing..."
+  brew install rust
+fi
+
 ## Fonts
 if [ -d "$git_fonts_dir/Menlo-for-Powerline" ]
 then
@@ -166,7 +174,7 @@ do
   fi
 
   cp $src $dest
-done 
+done
 
 # Special cases
 cp $DIR/dotfiles/ssh/config ~/.ssh/config
