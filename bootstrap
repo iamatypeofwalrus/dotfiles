@@ -178,6 +178,7 @@ done
 
 # Special cases
 cp $DIR/dotfiles/ssh/config ~/.ssh/config
+./bootstrap_common
 
 ## Git
 echo "configuring gitignore global"
