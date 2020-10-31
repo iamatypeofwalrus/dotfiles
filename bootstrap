@@ -42,7 +42,7 @@ else
 fi
 
 ## Ruby
-if [ -d ~/.rbenv ]
+if [ -x "$(command -v rbenv)" ]
 then
   echo "rbenv is already installed"
 else
@@ -51,7 +51,7 @@ else
 fi
 
 ## Python
-if [ -d ~/.pyenv ]
+if [ -x "$(command -v pyenv)" ]
 then
   echo "pyenv is already installed"
 else
@@ -98,7 +98,7 @@ fi
 
 pyenv global $PYTHON_THREE_LATEST
 
-if command -v pip >> /dev/null
+if [ -x "$(command -v pip)" ]
 then
   echo "pip is already installed"
 else
@@ -106,7 +106,7 @@ else
   easy_install pip
 fi
 
-if command -v aws >> /dev/null
+if [ -x "$(command -v aws)" ]
 then
   echo "aws cli is already installed"
 else
@@ -115,7 +115,7 @@ else
 fi
 
 ## Go
-if command -v go >> /dev/null
+if [ -x "$(command -v go)" ]
 then
   echo "go is already installed"
 else
@@ -123,7 +123,7 @@ else
   brew install go
 fi
 
-if command -v rustc >> /dev/null
+if [ -x "$(command -v rustc)" ]
 then
   echo "brew is already installed"
 else

@@ -5,4 +5,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo
 
-cp $DIR/dotfiles/config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+# cp $DIR/dotfiles/config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
