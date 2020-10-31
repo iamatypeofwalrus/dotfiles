@@ -63,6 +63,16 @@ eval "$(pyenv init -)"
 export PATH="~/.pyenv/bin:$PATH"
 export PATH=$(python -m site --user-base)/bin:$PATH
 
+## Node
+if [ -x "$(command -v nodenv)" ]
+then
+  echo "nodenv is already installed"
+else
+  echo "nodenv is not installed. Installing..."
+  brew install nodenv
+fi
+
+## Readline
 if [ ! -z "$BOOTSTRAP_FORCE" ]
 then
   # Needed the following brew and installer calls due to a build problem on Mojave
