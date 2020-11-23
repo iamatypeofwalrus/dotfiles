@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+set -e
+mkdir -p ~/bin
+
+tool=sts
+
+# Fetching Go based tools
+go_tools="ccat kpr liltunnel qp spt sqsdr srv sts"
+
+for tool in $go_tools
+do
+    echo "installing $tool"
+    download_url=$(curl --silent https://api.github.com/repos/iamatypeofwalrus/$tool/releases/latest | jq '.assets | .[] | select(.browser_download_url | contains("darwin")) | .browser_download_url' | sed 's/"//g')
+    tmp_dir=/tmp/$tool
+    mkdir -p $tmp_dir
+    curl --silent -L -o $tmp_dir/$tool.tar.gz $download_url
+    tar xf $tmp_dir/$tool.tar.gz -C $tmp_dir
+    mv $tmp_dir/$tool ~/bin
+    rm -rf $tmp_dir
+done
