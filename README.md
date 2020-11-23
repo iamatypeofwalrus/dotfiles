@@ -2,7 +2,7 @@
 Setup a new Mac
 
 ## TODO
-* VS Code settings
+* TODO - create a separate bootstrap Mac script from just general dotfile stuff so I can pull this into a codespace
 
 ## Pre bootstrap
 * Download Xcode from the App Store
@@ -23,3 +23,4 @@ Setup a new Mac
 ### Terminal
 * [Install Dracula theme for Terminal](https://github.com/dracula/terminal-app)
 * set font to `Menlo Regular for Powerline` @ 14pt
+* Set VS Code Terminal Font to ...
