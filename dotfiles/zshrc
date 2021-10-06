@@ -38,14 +38,14 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
 
-# Python
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  export PATH="~/.pyenv/bin:$PATH"
-  export PATH=$(python -m site --user-base)/bin:$PATH
-fi
-
 # Node
 if command -v nodenv 1>/dev/null 2>&1; then
   eval "$(nodenv init -)"
+fi
+
+# Python
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+  export PATH=$(python -m site --user-base)/bin:$PATH
 fi

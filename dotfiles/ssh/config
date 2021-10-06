@@ -1,6 +1,0 @@
-Host github.com
-        IdentityFile ~/.ssh/github_rsa
-
-Host git-codecommit.*.amazonaws.com
-        User APKAINGCY5TLPXXN3NOA
-        IdentityFile ~/.ssh/aws_rsa
