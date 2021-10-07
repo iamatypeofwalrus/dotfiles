@@ -1,31 +1,45 @@
 # dotfiles
 Setup a new Mac
 
-## TODO
-* add installing the CLI tools i've built to bin/
-
-## Pre bootstrap
+## Pre Bootstrap: Install XCode Tools
 * Download Xcode from the App Store
 * Install developer tools `xcode-select --install`
 
-### Install Sublime Text
-* https://www.sublimetext.com/download
-
-### VS Code
-* [Install VS Code](https://code.visualstudio.com)
-* [Install Dracula theme for VS Code](https://github.com/dracula/visual-studio-code)
-
-### System Preferences
-* Map Caps Lock to Control
-* Map cmd+shift+\ to show notification center
-
-## bootstrap
+## Bootstrap
 ```
 ./bootstrap
+
+# If at work you must be off VPN else Github will throttle you
+./script/fetch-my-tools
 ```
 
 ## Post bootstrap
-### Terminal
-* [Install Dracula theme for Terminal](https://github.com/dracula/terminal-app)
+### Install Sublime Text
+* https://www.sublimetext.com/download
+
+### Install  VS Code
+* [Install VS Code](https://code.visualstudio.com)
+### Mac App Store
+* [Things](https://apps.apple.com/us/app/things-3/id904280696?mt=12)
+* [Fantastical](https://apps.apple.com/us/app/fantastical-calendar-tasks/id975937182?mt=12)
+* [Magnet](https://apps.apple.com/us/app/magnet/id441258766?mt=12)
+* [iA Writer](https://apps.apple.com/us/app/ia-writer/id775737590?mt=12)
+* [Kaleidoscope](https://apps.apple.com/us/app/kaleidoscope/id587512244?mt=12)
+
+## Dracula
+[Install Dracula theme for the following applications](https://draculatheme.com/)
+
+- [ ] [Terminal](https://draculatheme.com/terminal)
+- [ ] [VS Code](https://draculatheme.com/visual-studio-code)
+- [ ] [Chrome](https://draculatheme.com/chrome)
+- [ ] [Slack](https://draculatheme.com/slack)
+
+### OS Settings
+#### System Preferences
+* Map Caps Lock to Control
+* Map cmd+shift+\ to show notification center
+
+
+### App Specific
+#### Terminal
 * set font to `Menlo Regular for Powerline` @ 14pt
-* Set VS Code Terminal Font to ...
