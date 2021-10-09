@@ -43,3 +43,16 @@ Setup a new Mac
 ### App Specific
 #### Terminal
 * set font to `Menlo Regular for Powerline` @ 14pt
+
+## Appendix
+### Lazy Loading Program Runtimes
+https://frederic-hemberger.de/notes/shell/speed-up-initial-zsh-startup-with-lazy-loading/
+
+````zsh
+ruby() {
+  unfunction $0
+  eval "$(rbenv init -)"
+  $0 "$@"
+}
+
+```

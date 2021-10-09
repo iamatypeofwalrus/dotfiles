@@ -1,0 +1,102 @@
+#!/usr/bin/env sh
+set -e
+
+echo "installing language runtimes"
+
+## Ruby
+if [ -x "$(command -v rbenv)" ]
+then
+  echo "rbenv is already installed"
+else
+  echo "rbenv is not installed. Installing..."
+  brew install rbenv
+fi
+
+## Python
+if [ -x "$(command -v pyenv)" ]
+then
+  echo "pyenv is already installed"
+else
+  echo "pyenv is not installed. Installing..."
+  brew install pyenv
+fi
+
+eval "$(pyenv init -)"
+export PATH="~/.pyenv/bin:$PATH"
+export PATH=$(python -m site --user-base)/bin:$PATH
+
+## Readline
+# NOTE: as of 10/19/2021 I can no longer find the reference to this issue in common build problems. I'm commenting out for the
+#       sake of keeping the script simple
+# if [ ! -z "$BOOTSTRAP_FORCE" ]
+# then
+#   # Needed the following brew and installer calls due to a build problem on Mojave
+#   # https://github.com/pyenv/pyenv/wiki/Common-build-problems
+#   brew install readline xz
+
+#   MAC_OS_VERSION=$(sw_vers | grep ProductVersion | awk '{print $2}' | awk -F. '{print $2}')
+#   MAC_OS_HIGH_SIERRA=13
+
+#   if [ "$MAC_OS_VERSION" -gt "$MAC_OS_HIGH_SIERRA" ]
+#   then
+#     sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+#   fi
+# fi
+
+PYTHON_TWO_LATEST=$(pyenv install --list | sed 's/^[[:space:]]*//' | grep "^[2]\.[0-9]\.[0-9]*$" | tail -n 1)
+PYTHON_THREE_LATEST=$(pyenv install --list | sed 's/^[[:space:]]*//' | grep "^[3]\.[0-9]\.[0-9]*$" | tail -n 1)
+
+if pyenv versions | grep $PYTHON_TWO_LATEST >> /dev/null
+then
+  echo "python $PYTHON_TWO_LATEST is already installed"
+else
+  echo "python $PYTHON_TWO_LATEST is not installed. Installing..."
+  pyenv install $PYTHON_TWO_LATEST
+  pyenv rehash
+fi
+
+if pyenv versions | grep $PYTHON_THREE_LATEST >> /dev/null
+then
+  echo "python $PYTHON_THREE_LATEST is already installed"
+else
+  echo "python $PYTHON_THREE_LATEST is not installed. Installing..."
+  pyenv install $PYTHON_THREE_LATEST
+  pyenv rehash
+fi
+
+pyenv global $PYTHON_THREE_LATEST
+
+# Need to put pyenv on the path!
+eval "$(pyenv init --path)"
+
+if [ -x "$(command -v pip)" ]
+then
+  echo "pip is already installed"
+else
+  echo "installing pip"
+  easy_install pip
+fi
+
+if [ -x "$(command -v nodenv)" ]
+then
+  echo "nodenv is already installed"
+else
+  echo "nodenv is not installed. Installing..."
+  brew install nodenv
+fi
+
+if [ -x "$(command -v go)" ]
+then
+  echo "go is already installed"
+else
+  echo "go is not installed. Installing..."
+  brew install go
+fi
+
+if [ -x "$(command -v rustc)" ]
+then
+  echo "rust is already installed"
+else
+  echo "rust is not installed, Installing..."
+  brew install rust
+fi

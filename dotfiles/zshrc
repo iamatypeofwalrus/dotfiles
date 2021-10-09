@@ -1,57 +1,70 @@
-# Oh My Zsh
-ZSH=$HOME/.oh-my-zsh
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
+# zsh configurations
+autoload -U compinit; compinit
 
-# Alias
-alias editzshrc='subl ~/.zshrc'
-alias sourcezshrc='source ~/.zshrc'
+# zsh directories
+setopt auto_cd           # change into directories without cd
+setopt auto_pushd        # push directory changes onto stack
+setopt pushd_ignore_dups # Don’t push multiple copies of the same directory onto the directory stack.
+setopt pushdminus        # Exchanges the meanings of ‘+’ and ‘-’ when used with a number to specify a directory in the stack.
+
+# zsh completion options
+setopt auto_list        # automatically list choices on ambiguous completion
+setopt auto_menu        # automatically use menu completion
+setopt always_to_end    # move cursor to end if word had one match
+setopt auto_param_slash # If a parameter is completed whose content is the name of a directory, then add a trailing slash instead of a space.
+
+zstyle ':completion:*' menu select       # select completions with arrow keys
+zstyle ':completion:*' group-name ''     # group results by category
+zstyle ':completion:*' special-dirs true # allow autocompleting of special directories
+zstyle ':completion:*' list-colors ''    # show colors
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01' # show colors
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
+
+## zsh history
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+setopt share_history          # share command history data
+
+# my shell configurations
 alias ll='ls -alh'
 
-# Exports
 export EDITOR="subl --wait"
 export GREP_OPTIONS='--color=auto'
-export DISABLE_LS_COLORS="false"
 export GOPATH=$HOME/code/go
-export ZSHRC=$HOME/.zshrc
-export machine="someputer"
+export CLICOLOR=true               # ls colors output
 
-# Path maniuplation
 export PATH=$HOME/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin":$PATH # subl
+export PATH=~/.nodenv/shims:$PATH            # nodenv
+export PATH=/usr/local/var/rbenv/shims:$PATH # rbenv
+export PATH=~/.pyenv/shims:$PATH             # pyenv
+export PATH=~/.local/bin:$PATH               # python user install
 
-# Set PS1 Prompt
-# feeneyj on cloud-desktop in dotfiles/ at  mainline ✗
-# $
-export PROMPT='%{$fg_bold[red]%}$USER %{$reset_color%}%{$fg[white]%}on %{$reset_color%}%{$fg_bold[yellow]%}$machine %{$reset_color%}%{$fg[white]%}in %{$reset_color%}%{$fg_bold[blue]%}%c/ %{$reset_color%}$(git_prompt_info)
+# feeneyj in dotfiles/
+# $ 
+export PROMPT='%B%F{red}%n%f%b in %B%F{blue}%1~/%f%b
 $ '
-export ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}at %{$reset_color%}%{$fg_bold[blue]%}\uE0A0 %{$fg[red]%}"
-export ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-export ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%} %{$fg[yellow]%}✗"
-export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
 
-# Setup language environments
-## Ruby
-if which rbenv > /dev/null; then
-  export RBENV_ROOT=/usr/local/var/rbenv
-  eval "$(rbenv init -)";
-fi
-
-## Node
-if command -v nodenv 1>/dev/null 2>&1; then
+# load runtimes
+lr() {
+  eval "$(rbenv init -)" 
   eval "$(nodenv init -)"
-fi
-
-## Python
-if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
   export PATH=$(python -m site --user-base)/bin:$PATH
-fi
+}
 
 # it's a living....
 if [ -f ~/.work.zshrc ]

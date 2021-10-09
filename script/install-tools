@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+# Update path so this file can see pip
+eval "$(pyenv init --path)"
+
+if [ -x "$(command -v jq)" ]
+then
+  echo "jq is already installed"
+else
+  echo "jq is not installed. Installing..."
+  brew install jq
+fi
+
+if [ -x "$(command -v aws)" ]
+then
+  echo "aws cli is already installed"
+else
+  echo "aws cli is not installed. Installing..."
+  pip install awscli --user
+fi
+
+if [ -x "$(command -v in2csv)" ]
+then
+  echo "csv toolkit is already installed"
+else
+  echo "csv toolkit is not installed. Installing..."
+  pip install csvkit
+fi

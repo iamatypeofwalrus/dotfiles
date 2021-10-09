@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+set -e
+
+echo "installing dotfiles"
+
+THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR=$THIS_DIR/..
+
+echo "replacing existing dotfiles..."
+for f in `ls -p $DIR/dotfiles | grep -v /`
+do
+  src=$DIR/dotfiles/$f
+  dest=~/.$f
+
+  if [ -f $dest ]; then
+    mv $dest $dest.old
+  fi
+
+  cp $src $dest
+done
+
+## Git
+echo "configuring gitignore global"
+git config --global core.excludesfile ~/.gitignore_global
