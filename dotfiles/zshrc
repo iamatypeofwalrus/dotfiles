@@ -18,6 +18,9 @@ zstyle ':completion:*' group-name ''     # group results by category
 zstyle ':completion:*' special-dirs true # allow autocompleting of special directories
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
 
+# Pressing escape will dismiss the autocomplete menu and take you back to the standard command line prompt
+bindkey -M menuselect '\e' send-break
+
 # Using https://geoff.greer.fm/lscolors/ to convert the default LSCOLORS used by Mac OS (exfxcxdxbxegedabagacad) to a format
 # that zsh can understand. Tab complete will now look exactly like ls output
 zstyle ':completion:*:default' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
