@@ -33,13 +33,27 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
 
+# According to man zshbuiltins history command is just an alias to fc -l
+# history was defaulting to only the last 16 lines because it was defined as fc -l -16 -1
+# this will show all history
+alias history="fc -l 1"
+
+## zsh editor
+## NOTE: there is a bug in Sublime Text 4 where after saving and closing the window the terminal
+##       is not brought back into focus https://github.com/sublimehq/sublime_text/issues/4460
+##       For now you have to cmd+tab back to Terminal. Like a chump.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line # press ctrl-x ctrl-e to open the current command in an editor
+
 # my shell configurations
 alias ll='ls -alh'
+alias igrep='grep -i'
 
-export EDITOR="subl --wait"
+export EDITOR="subl --wait --new-window"
 export GREP_OPTIONS='--color=auto'
-export GOPATH=$HOME/code/go
 export CLICOLOR=true               # ls colors output
+export GOPATH=$HOME/code/go
 
 export PATH=$HOME/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
