@@ -8,6 +8,8 @@ setopt pushd_ignore_dups # Don’t push multiple copies of the same directory on
 setopt pushdminus        # Exchanges the meanings of ‘+’ and ‘-’ when used with a number to specify a directory in the stack.
 
 # zsh completion options
+zmodload -i zsh/complist # make the completion listing extenions load. Let's me define the menuselect escape binding below
+
 setopt auto_list        # automatically list choices on ambiguous completion
 setopt auto_menu        # automatically use menu completion
 setopt always_to_end    # move cursor to end if word had one match
