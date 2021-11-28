@@ -92,3 +92,6 @@ if [ -f ~/.work.zshrc ]
 then
   source ~/.work.zshrc
 fi
+
+## AWS
+export AWS_DEFAULT_REGION=us-west-2
