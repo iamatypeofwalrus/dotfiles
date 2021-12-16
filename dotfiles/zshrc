@@ -1,4 +1,6 @@
 # zsh configurations
+# TODO: add awscli completion
+
 autoload -U compinit; compinit
 
 # zsh directories
