@@ -1,5 +1,6 @@
 # zsh configurations
 # TODO: add awscli completion
+# TODO: ls colors needs to work in dotfiles repo
 
 autoload -U compinit; compinit
 
