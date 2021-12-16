@@ -3,14 +3,15 @@ set -e
 
 echo "installing dotfiles"
 
-THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT=$(readlink -f "$0")
+THIS_DIR=$(dirname "$SCRIPT")
 DIR=$THIS_DIR/..
 
 echo "replacing existing dotfiles..."
 for f in `ls -p $DIR/dotfiles | grep -v /`
 do
   src=$DIR/dotfiles/$f
-  dest=~/.$f
+  dest=$HOME/.$f
 
   if [ -f $dest ]; then
     mv $dest $dest.old
