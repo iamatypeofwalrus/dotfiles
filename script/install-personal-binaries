@@ -3,7 +3,16 @@ set -e
 
 echo "installing personal binaries"
 
-mkdir -p $BOOTSTRAP_BIN_DIR
+arch='amd64' # assume x86 64bit for now
+os=''
+if [ "$(uname -s)" = "Darwin" ]
+then
+    os='darwin'
+else
+    os='linux'
+fi 
+
+mkdir -p $HOME/bin
 
 # Fetching Go based tools
 go_tools="ccat kpr liltunnel qp spt sqsdr srv sts"
@@ -11,11 +20,14 @@ go_tools="ccat kpr liltunnel qp spt sqsdr srv sts"
 for tool in $go_tools
 do
     echo "installing $tool"
-    download_url=$(curl --silent https://api.github.com/repos/iamatypeofwalrus/$tool/releases/latest | jq '.assets | .[] | select(.browser_download_url | contains("darwin")) | .browser_download_url' | sed 's/"//g')
+    download_url=$(curl --silent https://api.github.com/repos/iamatypeofwalrus/$tool/releases/latest \
+        | jq --arg OS "$os" --arg ARCH "$arch" '.assets | .[] | select(.browser_download_url | contains($OS)) | select(.browser_download_url | contains($ARCH)) | .browser_download_url' \
+        | sed 's/"//g')
+    
     tmp_dir=/tmp/$tool
     mkdir -p $tmp_dir
     curl --silent -L -o $tmp_dir/$tool.tar.gz $download_url
     tar xf $tmp_dir/$tool.tar.gz -C $tmp_dir
-    mv $tmp_dir/$tool $BOOTSTRAP_BIN_DIR
+    mv $tmp_dir/$tool $HOME/bin
     rm -rf $tmp_dir
 done
