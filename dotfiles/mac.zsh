@@ -16,6 +16,8 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 export GOPATH=$HOME/code/go
 
+alias ssh-gh-cs="gh codespace ssh -- -t 'zsh -l'"
+
 # load runtimes
 lr() {
     eval "$(rbenv init -)" 

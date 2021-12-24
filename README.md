@@ -49,6 +49,11 @@ Setup a new Mac
 * set font to `Menlo Regular for Powerline` @ 14pt
 
 ## Appendix
+### Github Codespace: use zsh when connecting over ssh
+```
+gh codespace ssh -- -t 'zsh -l'
+```
+
 ### Lazy Loading Program Runtimes
 https://frederic-hemberger.de/notes/shell/speed-up-initial-zsh-startup-with-lazy-loading/
 
