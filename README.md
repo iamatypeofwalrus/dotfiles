@@ -7,10 +7,10 @@ Setup a new Mac
 
 ## Bootstrap
 ```
-./bootstrap-mac-personal
+./bootstrap
 
 # If at work you must be off VPN else Github will throttle you
-./script/fetch-my-tools
+./script/install-personal-binaries
 ```
 
 ## Post bootstrap

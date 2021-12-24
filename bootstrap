@@ -1,10 +1,14 @@
 #!/usr/bin/env sh
 set -e
 
-# This is for Github Codespaces set and is a subset of what would normally be installed on a mac
-export BOOTSTRAP_BIN_DIR=$HOME/bin
-mkdir -p $BOOTSTRAP_BIN_DIR
-
 ./script/install-dotfiles
 ./script/install-personal-binaries
-./script/install-linux-tools
+
+if [ "$(uname -s)" = "Darwin" ]
+then
+    ./script/install-mac-fonts
+    ./script/install-mac-tools
+else
+    # Assume Linux / Codespaces
+    ./script/install-linux-tools
+fi
