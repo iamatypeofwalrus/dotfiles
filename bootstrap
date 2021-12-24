@@ -6,3 +6,4 @@ export BOOTSTRAP_BIN_DIR=$HOME/bin
 mkdir -p $BOOTSTRAP_BIN_DIR
 
 ./script/install-dotfiles
+./script/install-linux-tools
