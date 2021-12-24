@@ -4,7 +4,7 @@ set -e
 ## Dotfiles
 echo "installing dotfiles"
 
-DOTFILES_DIR="""$(dirname $0)/../script"""
+DOTFILES_DIR="""$(dirname $0)/../dotfiles"""
 for f in `ls -p $DOTFILES_DIR | grep -v /`
 do
   src=$DOTFILES_DIR/$f
