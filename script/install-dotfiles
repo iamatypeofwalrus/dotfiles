@@ -1,17 +1,13 @@
 #!/usr/bin/env sh
 set -e
 
+## Dotfiles
 echo "installing dotfiles"
 
-# TODO: this does not work on Mac
-SCRIPT=$(readlink -f "$0")
-THIS_DIR=$(dirname "$SCRIPT")
-DIR=$THIS_DIR/..
-
-echo "replacing existing dotfiles..."
-for f in `ls -p $DIR/dotfiles | grep -v /`
+DOTFILES_DIR="""$(dirname $0)/../script"""
+for f in `ls -p $DOTFILES_DIR | grep -v /`
 do
-  src=$DIR/dotfiles/$f
+  src=$DOTFILES_DIR/$f
   dest=$HOME/.$f
 
   if [ -f $dest ]; then

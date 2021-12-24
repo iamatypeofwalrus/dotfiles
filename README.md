@@ -7,7 +7,7 @@ Setup a new Mac
 
 ## Bootstrap
 ```
-./bootstrap
+./bootstrap-mac-personal
 
 # If at work you must be off VPN else Github will throttle you
 ./script/fetch-my-tools
@@ -19,12 +19,16 @@ Setup a new Mac
 
 ### Install  VS Code
 * [Install VS Code](https://code.visualstudio.com)
+
 ### Mac App Store
 * [Things](https://apps.apple.com/us/app/things-3/id904280696?mt=12)
 * [Fantastical](https://apps.apple.com/us/app/fantastical-calendar-tasks/id975937182?mt=12)
 * [Magnet](https://apps.apple.com/us/app/magnet/id441258766?mt=12)
 * [iA Writer](https://apps.apple.com/us/app/ia-writer/id775737590?mt=12)
 * [Kaleidoscope](https://apps.apple.com/us/app/kaleidoscope/id587512244?mt=12)
+
+### Others
+* [Alfred](https://www.alfredapp.com)
 
 ## Dracula
 [Install Dracula theme for the following applications](https://draculatheme.com/)

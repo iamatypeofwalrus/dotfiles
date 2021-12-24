@@ -21,7 +21,7 @@ else
 fi
 
 ./script/install-dotfiles
-./script/install-fonts
-./script/install-language-runtimes
-./script/install-tools
+./script/install-mac-fonts
+./script/install-mac-language-runtimes
+./script/install-mac-tools
 ./script/install-personal-binaries
