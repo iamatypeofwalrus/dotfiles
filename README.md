@@ -51,7 +51,10 @@ Setup a new computer
 
 ### Mac App Preferense
 #### Magnet Shortcuts
-TK
+* Left Third  - ctrl + alt + cmd + left
+* Right Third - ctrl + alt + cmd + right
+* Left Two Thirds - ctrl + alt + cmd + up
+* Right Two Thirds - ctrl + alt + cmd + down
 
 #### Terminal
 * set font to `Menlo Regular for Powerline` @ 14pt
