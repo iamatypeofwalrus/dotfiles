@@ -1,9 +1,14 @@
 # dotfiles
-Setup a new Mac
+Setup a new computer
 
-## Pre Bootstrap: Install XCode Tools
+## Personal Mac
+### Pre Bootstrap: Install XCode Tools
 * Download Xcode from the App Store
 * Install developer tools `xcode-select --install`
+
+## Work Mac
+
+## Linux
 
 ## Bootstrap
 ```
@@ -13,11 +18,11 @@ Setup a new Mac
 ./script/install-personal-binaries
 ```
 
-## Post bootstrap
+## Mac Apps
 ### Install Sublime Text
 * https://www.sublimetext.com/download
 
-### Install  VS Code
+### Install VS Code
 * [Install VS Code](https://code.visualstudio.com)
 
 ### Mac App Store
@@ -29,22 +34,25 @@ Setup a new Mac
 
 ### Others
 * [Alfred](https://www.alfredapp.com)
+* TK time tracker app
 
-## Dracula
+### Dracula Themes
 [Install Dracula theme for the following applications](https://draculatheme.com/)
 
-- [ ] [Terminal](https://draculatheme.com/terminal)
-- [ ] [VS Code](https://draculatheme.com/visual-studio-code)
-- [ ] [Chrome](https://draculatheme.com/chrome)
-- [ ] [Slack](https://draculatheme.com/slack)
+* [Terminal](https://draculatheme.com/terminal)
+* [VS Code](https://draculatheme.com/visual-studio-code)
+* [Chrome](https://draculatheme.com/chrome)
+* [Slack](https://draculatheme.com/slack)
 
-### OS Settings
+### Mac OS System Preferences
 #### System Preferences
 * Map Caps Lock to Control
 * Map cmd+shift+\ to show notification center
 
+### Mac App Preferense
+#### Magnet Shortcuts
+TK
 
-### App Specific
 #### Terminal
 * set font to `Menlo Regular for Powerline` @ 14pt
 
