@@ -5,6 +5,4 @@ FROM "mcr.microsoft.com/vscode/devcontainers/universal:linux"
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
-        jq \
-        hugo \
-        awscli
+        jq
