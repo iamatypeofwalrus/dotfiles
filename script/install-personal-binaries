@@ -15,7 +15,7 @@ fi
 mkdir -p $HOME/bin
 
 # Fetching Go based tools
-go_tools="ccat kpr liltunnel qp spt sqsdr srv"
+go_tools="ccat kpr liltunnel qp spt sqsdr srv sts"
 
 for tool in $go_tools
 do
