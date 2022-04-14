@@ -1,6 +1,10 @@
 {
-  "image": "mcr.microsoft.com/vscode/devcontainers/universal:linux",
-   "settings": { 
+  "name": "joes-dev-env",
+  "runArgs": ["--init"],
+  "build": {
+	  "dockerfile": "Dockerfile"
+	},
+  "settings": { 
 		"terminal.integrated.shell.linux": "/bin/zsh"
 	}
 }
