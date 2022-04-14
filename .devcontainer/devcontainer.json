@@ -3,8 +3,8 @@
   "runArgs": ["--init"],
   "build": {
 	  "dockerfile": "Dockerfile"
-	},
-  "settings": { 
-		"terminal.integrated.shell.linux": "/bin/zsh"
-	}
+  },
+  "settings": {
+	  "terminal.integrated.shell.linux": "/bin/zsh"
+  }
 }
