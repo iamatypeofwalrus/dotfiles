@@ -9,4 +9,5 @@ RUN sudo apt-get update \
         jq \
         goreleaser \
         hugo \
-        awscli
+        awscli \
+        protobuf-compiler
