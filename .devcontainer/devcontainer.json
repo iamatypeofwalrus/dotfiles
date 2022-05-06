@@ -1,10 +1,12 @@
 {
   "name": "joes-dev-env",
   "runArgs": ["--init"],
-  "build": {
-	  "dockerfile": "Dockerfile"
-  },
+  "image": "mcr.microsoft.com/vscode/devcontainers/universal:linux",
+  // "build": {
+	//   "dockerfile": "Dockerfile"
+  // },
   "settings": {
-	  "terminal.integrated.shell.linux": "/bin/zsh"
-  }
+    // TODO
+  },
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh"
 }
