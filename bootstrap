@@ -2,7 +2,6 @@
 set -e
 
 ./script/install-dotfiles
-./script/install-personal-binaries
 
 if [ "$(uname -s)" = "Darwin" ]
 then
@@ -12,3 +11,5 @@ else
     # Assume Linux / Codespaces
     ./script/install-linux-tools
 fi
+
+./script/install-personal-binaries
