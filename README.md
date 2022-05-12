@@ -34,7 +34,7 @@ Setup a new computer
 
 ### Others
 * [Alfred](https://www.alfredapp.com)
-* TK time tracker app
+* [Timer app](https://github.com/michaelvillar/timer-app)
 
 ### Dracula Themes
 [Install Dracula theme for the following applications](https://draculatheme.com/)
@@ -50,10 +50,15 @@ Setup a new computer
 * Map cmd+shift+\ to show notification center
 
 #### Magnet Shortcuts
+* Left - ctrl + cmd + left
+* Right - ctrl - cmd + right
+
 * Left Third  - ctrl + alt + cmd + left
 * Right Third - ctrl + alt + cmd + right
 * Left Two Thirds - ctrl + alt + cmd + up
 * Right Two Thirds - ctrl + alt + cmd + down
+
+* maximize - ctrl + alt + cmd + m
 
 #### Things shortcuts
 * New todo - ctrl + cmd + space
