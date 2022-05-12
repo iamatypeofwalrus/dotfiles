@@ -55,6 +55,16 @@ Setup a new computer
 * Left Two Thirds - ctrl + alt + cmd + up
 * Right Two Thirds - ctrl + alt + cmd + down
 
+#### Things shortcuts
+* New todo - ctrl + cmd + space
+* helper todo - ctrl + alt + cmd + space
+
+#### Mac OS Hot Corners
+* Upper left - Mission control
+* lower left - desktop
+* Upper Right - application windows
+* lower left - quick note
+
 #### Terminal
 * set font to `Menlo Regular for Powerline` @ 14pt
 
