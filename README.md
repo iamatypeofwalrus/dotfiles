@@ -44,12 +44,11 @@ Setup a new computer
 * [Chrome](https://draculatheme.com/chrome)
 * [Slack](https://draculatheme.com/slack)
 
-### Mac OS System Preferences
+### Mac OS Preferences
 #### System Preferences
 * Map Caps Lock to Control
 * Map cmd+shift+\ to show notification center
 
-### Mac App Preferense
 #### Magnet Shortcuts
 * Left Third  - ctrl + alt + cmd + left
 * Right Third - ctrl + alt + cmd + right
