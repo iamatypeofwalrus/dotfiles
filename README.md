@@ -34,7 +34,7 @@ Setup a new computer
 
 ### Others
 * [Alfred](https://www.alfredapp.com)
-* TK time tracker app
+* [Timer app](https://github.com/michaelvillar/timer-app)
 
 ### Dracula Themes
 [Install Dracula theme for the following applications](https://draculatheme.com/)
