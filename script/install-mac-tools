@@ -66,29 +66,6 @@ else
   easy_install pip
 fi
 
-if [ -x "$(command -v nodenv)" ]
-then
-  echo "nodenv is already installed"
-else
-  echo "nodenv is not installed. Installing..."
-  brew install nodenv
-fi
-
-if [ -x "$(command -v go)" ]
-then
-  echo "go is already installed"
-else
-  echo "go is not installed. Installing..."
-  brew install go
-fi
-
-if [ -x "$(command -v rustc)" ]
-then
-  echo "rust is already installed"
-else
-  echo "rust is not installed, Installing..."
-  brew install rust
-fi
 
 # Tools that require other languages / tooling
 eval "$(pyenv init --path)"
@@ -115,4 +92,12 @@ then
 else
   echo "csv toolkit is not installed. Installing..."
   pip install csvkit
+fi
+
+if [ -x "$(command -v jless)" ]
+then
+  echo "jless toolkit is already installed"
+else
+  echo "jless is not installed. Installing..."
+  brew install jless
 fi
