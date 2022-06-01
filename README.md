@@ -41,8 +41,8 @@ Setup a new computer
 
 * [Terminal](https://draculatheme.com/terminal)
 * [VS Code](https://draculatheme.com/visual-studio-code)
-* [Chrome](https://draculatheme.com/chrome)
-* [Slack](https://draculatheme.com/slack)
+* [Pygments (for iPython)](https://draculatheme.com/pygments)
+* [Sublime Text](https://draculatheme.com/sublime)
 
 ### Mac OS Preferences
 #### System Preferences
