@@ -1,0 +1,5 @@
+#!/usr/bin/env awk -f
+
+{ SUM += 1 }
+
+END { print SUM }
