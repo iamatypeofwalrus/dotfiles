@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+import argparse
+import fileinput
+from pytimeparse.timeparse import timeparse # pip install pytimeparse
+
+parser = argparse.ArgumentParser(description='converts a duration string e.g. 5s 1hr5min into seconds using the pytimeparse library')
+parser.parse_args()
+
+for line in fileinput.input():
+	parsed = timeparse(line)
+
+	# NOTE: for now skipping anything that can't be parsed. I don't have any use case that requires
+	#       a one to one input to output. If I do then i'll need to update this script
+	if parsed != None:
+		print(parsed)
