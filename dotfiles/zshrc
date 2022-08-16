@@ -79,7 +79,7 @@ then
 fi
 
 # it's a living....
-if [ -f $HOME/.work.zshrc ]
+if [ -f $HOME/.work.zsh ]
 then
-  source $HOME/.work.zshrc
+  source $HOME/.work.zsh
 fi

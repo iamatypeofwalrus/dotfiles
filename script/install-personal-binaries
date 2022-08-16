@@ -3,7 +3,7 @@ set -e
 
 echo "installing personal binaries"
 
-arch='amd64' # assume x86 64bit for now
+arch='amd64' # TODO: update to handle ARM
 os=''
 if [ "$(uname -s)" = "Darwin" ]
 then

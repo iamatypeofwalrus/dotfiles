@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+echo "installing python tools"
+
+if [ -x "$(command -v pip)" ]
+then
+  echo "already installed: pip"
+else
+  echo "    installing: pip"
+  easy_install pip
+fi
+
+if [ -x "$(command -v aws)" ]
+then
+  echo "already installed: awscli"
+else
+  echo "    installing: awscli"
+  pip install awscli --user
+fi
+
+if [ -x "$(command -v in2csv)" ]
+then
+  echo "already installed: csvkit"
+else
+  echo "    installing: csvkit"
+  pip install csvkit
+fi

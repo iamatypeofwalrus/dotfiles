@@ -41,7 +41,6 @@ Setup a new computer
 
 * [Terminal](https://draculatheme.com/terminal)
 * [VS Code](https://draculatheme.com/visual-studio-code)
-* [Pygments (for iPython)](https://draculatheme.com/pygments)
 * [Sublime Text](https://draculatheme.com/sublime)
 
 ### Mac OS Preferences
@@ -77,16 +76,4 @@ Setup a new computer
 ### Github Codespace: use zsh when connecting over ssh
 ```
 gh codespace ssh -- -t 'zsh -l'
-```
-
-### Lazy Loading Program Runtimes
-https://frederic-hemberger.de/notes/shell/speed-up-initial-zsh-startup-with-lazy-loading/
-
-````zsh
-ruby() {
-  unfunction $0
-  eval "$(rbenv init -)"
-  $0 "$@"
-}
-
 ```

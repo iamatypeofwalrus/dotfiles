@@ -1,103 +1,25 @@
 #!/usr/bin/env sh
-echo "installing tools"
 
 if [ -x "$(command -v brew)" ]
 then
-  echo "brew is already installed"
+  echo "already installed: brew"
 else
-  echo "brew is not installed. Installing..."
+  echo "    installing: brew"
 
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-## Ruby
-if [ -x "$(command -v rbenv)" ]
-then
-  echo "rbenv is already installed"
-else
-  echo "rbenv is not installed. Installing..."
-  brew install rbenv
-fi
+function brewinstall () {
+  if [ -x "$(command -v $1)" ]
+  then
+    echo "already installed: $1"
+  else
+    echo "    installing: $1"
+    brew install $1
+  fi
+}
 
-## Python
-if [ -x "$(command -v pyenv)" ]
-then
-  echo "pyenv is already installed"
-else
-  echo "pyenv is not installed. Installing..."
-  brew install pyenv
-fi
-
-eval "$(pyenv init -)"
-export PATH="~/.pyenv/bin:$PATH"
-export PATH=$(python -m site --user-base)/bin:$PATH
-
-PYTHON_TWO_LATEST=$(pyenv install --list | sed 's/^[[:space:]]*//' | grep "^[2]\.[0-9]\.[0-9]*$" | tail -n 1)
-PYTHON_THREE_LATEST=$(pyenv install --list | sed 's/^[[:space:]]*//' | grep "^[3]\.[0-9]\.[0-9]*$" | tail -n 1)
-
-if pyenv versions | grep $PYTHON_TWO_LATEST >> /dev/null
-then
-  echo "python $PYTHON_TWO_LATEST is already installed"
-else
-  echo "python $PYTHON_TWO_LATEST is not installed. Installing..."
-  pyenv install $PYTHON_TWO_LATEST
-  pyenv rehash
-fi
-
-if pyenv versions | grep $PYTHON_THREE_LATEST >> /dev/null
-then
-  echo "python $PYTHON_THREE_LATEST is already installed"
-else
-  echo "python $PYTHON_THREE_LATEST is not installed. Installing..."
-  pyenv install $PYTHON_THREE_LATEST
-  pyenv rehash
-fi
-
-pyenv global $PYTHON_THREE_LATEST
-
-# Need to put pyenv on the path!
-eval "$(pyenv init --path)"
-
-if [ -x "$(command -v pip)" ]
-then
-  echo "pip is already installed"
-else
-  echo "installing pip"
-  easy_install pip
-fi
-
-
-# Tools that require other languages / tooling
-eval "$(pyenv init --path)"
-
-if [ -x "$(command -v jq)" ]
-then
-  echo "jq is already installed"
-else
-  echo "jq is not installed. Installing..."
-  brew install jq
-fi
-
-if [ -x "$(command -v aws)" ]
-then
-  echo "aws cli is already installed"
-else
-  echo "aws cli is not installed. Installing..."
-  pip install awscli --user
-fi
-
-if [ -x "$(command -v in2csv)" ]
-then
-  echo "csv toolkit is already installed"
-else
-  echo "csv toolkit is not installed. Installing..."
-  pip install csvkit
-fi
-
-if [ -x "$(command -v jless)" ]
-then
-  echo "jless toolkit is already installed"
-else
-  echo "jless is not installed. Installing..."
-  brew install jless
-fi
+brewinstall "jq"
+brewinstall "jless"
+brewinstall "wget"
+brewinstall "tree"
