@@ -43,6 +43,10 @@ Setup a new computer
 * [VS Code](https://draculatheme.com/visual-studio-code)
 * [Sublime Text](https://draculatheme.com/sublime)
 
+### Python on Mac
+* [Install from Conda](https://www.anaconda.com/products/distribution)
+* re-bootstrap to remove CONDA cruft from zshrc
+
 ### Mac OS Preferences
 #### System Preferences
 * Map Caps Lock to Control
