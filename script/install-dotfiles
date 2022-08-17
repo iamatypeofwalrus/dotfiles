@@ -18,5 +18,5 @@ do
 done
 
 ## Git
-echo "configuring gitignore global"
+echo "    configuring gitignore global"
 git config --global core.excludesfile ~/.gitignore_global

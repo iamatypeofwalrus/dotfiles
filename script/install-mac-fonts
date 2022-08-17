@@ -9,18 +9,18 @@ BOOTSTRAP_GIT_FONTS_DIR=$BOOTSTRAP_DEV_DIR/fonts
 
 if [ -d "$BOOTSTRAP_GIT_FONTS_DIR/Menlo-for-Powerline" ]
 then
-  echo "Menlo-for-Powerline is already installed"
+  echo "    already installed: Menlo-for-Powerline "
 else
-  echo "Menlo-for-Powerline is not installed. Installing..."
+  echo "    installing Menlo-for-Powerline"
   git clone https://github.com/abertsch/Menlo-for-Powerline $BOOTSTRAP_GIT_FONTS_DIR/Menlo-for-Powerline
   cp $BOOTSTRAP_GIT_FONTS_DIR/Menlo-for-Powerline/*.ttf $BOOTSTRAP_MAC_FONTS_DIR
 fi
 
 if [ -d "$BOOTSTRAP_GIT_FONTS_DIR/powerline" ]
 then
-  echo "SourceCodePro for Powerline font is already installed"
+  echo "    already installed: SourceCodePro"
 else
-  echo "SourceCodePro for Powerline is not installed. Installing..."
+  echo "    installing: SourceCodePro"
   git clone https://github.com/powerline/fonts.git $BOOTSTRAP_GIT_FONTS_DIR/powerline
   cp $BOOTSTRAP_GIT_FONTS_DIR/powerline/SourceCodePro/*.otf $BOOTSTRAP_MAC_FONTS_DIR
 fi

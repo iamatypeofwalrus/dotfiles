@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+set -e
+
+echo "installing bin scripts"
+
+BIN_SCRIPTS_DIR="""$(dirname $0)/../bin"""
+for f in `ls -p $BIN_SCRIPTS_DIR | grep -v /`
+do
+  src=$BIN_SCRIPTS_DIR/$f
+  dest=$HOME/bin/$f
+
+  if [ -f $dest ]; then
+    rm $dest
+  fi
+
+  cp $src $dest
+done
+

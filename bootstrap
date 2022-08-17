@@ -12,3 +12,5 @@ else
     ./script/install-linux-tools
     ./script/install-personal-binaries # TODO: update this script to check if amd64 or ARM and then put back at the bottom of this file
 fi
+
+./script/install-bin-scripts

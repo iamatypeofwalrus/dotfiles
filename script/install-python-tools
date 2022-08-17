@@ -4,7 +4,7 @@ echo "installing python tools"
 
 if [ -x "$(command -v pip)" ]
 then
-  echo "already installed: pip"
+  echo "    already installed: pip"
 else
   echo "    installing: pip"
   easy_install pip
@@ -13,7 +13,7 @@ fi
 # Install CLI commands
 if [ -x "$(command -v aws)" ]
 then
-  echo "already installed: awscli"
+  echo "    already installed: awscli"
 else
   echo "    installing: awscli"
   pip install awscli --user
@@ -32,7 +32,7 @@ function pip_install_library () {
   python -c "import $1"
   if [[ condition ]]
   then
-    echo "already installed: $1"
+    echo "    already installed: $1"
   else
     echo "    installing: $1"
     pip install $1

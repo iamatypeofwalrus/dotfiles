@@ -1,5 +1,7 @@
 #! /usr/bin/env sh
 
+echo 'installing linux tools'
+
 # TODO: all of these dependencies should be specified in the Dockerfile
 
 ## apt-get
