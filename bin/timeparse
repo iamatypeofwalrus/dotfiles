@@ -4,6 +4,10 @@ import argparse
 import fileinput
 from pytimeparse.timeparse import timeparse # pip install pytimeparse
 
+# TODO
+# convert from milliseconds to a human representation
+# convert from human representation into seconds / milliseconds
+
 parser = argparse.ArgumentParser(description='converts a duration string e.g. 5s 1hr5min into seconds using the pytimeparse library')
 parser.parse_args()
 
