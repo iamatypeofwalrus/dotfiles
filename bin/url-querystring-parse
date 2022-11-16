@@ -5,15 +5,19 @@ from urllib.parse import parse_qs
 import sys
 import json
 
-urls = []
-
-# TODO: or support STDIN
-if len(sys.argv) > 1:
-    urls.extend(sys.argv[1:])
-
-for url_string in urls:
-    url = urlparse(url_string)
+def parse_and_print(url_str):
+    url = urlparse(url_str)
     query_string = parse_qs(url.query)
     print(
         json.dumps(query_string), sep=''
     )
+
+if __name__ == '__main__':
+    urls = None
+    if len(sys.argv) > 1:
+        urls = sys.argv[1:]
+    else:
+        urls =sys.stdin
+
+    for url_str in urls:
+        parse_and_print(url_str)

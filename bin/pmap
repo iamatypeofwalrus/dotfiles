@@ -1,0 +1,33 @@
+#!/usr/bin/env python
+
+import argparse
+import sys
+
+# TODO
+# * model arguments
+# * accept an argument to treat the input as JSON and
+
+# parser = argparse.ArgumentParser(description='runs exec() on the first argument over STDIN')
+# parser.parse_args()
+
+if __name__ == "__main__":
+    cmd = ''
+    if len(sys.argv) > 1:
+        cmd = sys.argv[1]
+
+    for line in sys.stdin:
+        x = line.rstrip()
+
+        # emtpy strings are falsy
+        if not line:
+            continue
+
+        if not cmd:
+            continue
+
+        # we have a line we want to work on and we want to apply our cmd to it.
+        try:
+            exec(cmd)
+        except Exception as e:
+            print(e)
+            exit(1)
