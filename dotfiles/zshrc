@@ -57,6 +57,8 @@ bindkey '\C-x\C-e' edit-command-line # press ctrl-x ctrl-e to open the current c
 # Aliases
 alias ll='ls -alh'
 alias igrep='grep -i'
+alias nb='code ~/code/personal/notebooks/empty.ipynb'
+alias ip='jupyter qtconsole'
 
 # Exports
 export PATH=$HOME/bin:$PATH
