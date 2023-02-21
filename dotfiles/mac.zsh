@@ -10,3 +10,5 @@ export PATH="/opt/homebrew/bin":$PATH
 export PATH="/Users/jfeeney/opt/anaconda3/bin:$PATH"
 export PATH=~/.local/bin:$PATH # python user install
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH" # postgresql client
+
+alias cs="gh codespace ssh -- -t 'zsh -l'"
