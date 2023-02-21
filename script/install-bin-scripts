@@ -4,6 +4,8 @@ set -e
 
 echo "installing bin scripts"
 
+mkdir -p $HOME/bin
+
 BIN_SCRIPTS_DIR="""$(dirname $0)/../bin"""
 for f in `ls -p $BIN_SCRIPTS_DIR | grep -v /`
 do

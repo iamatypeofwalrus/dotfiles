@@ -35,21 +35,27 @@ Setup a new computer
 ### Others
 * [Alfred](https://www.alfredapp.com)
 * [Timer app](https://github.com/michaelvillar/timer-app)
+* [1Password](https://1password.com)
+* [1Password for Safari]()
+* [Docker](https://www.docker.com)
+* [Airbuddy](https://v2.airbuddy.app/download)
 
 ### Dracula Themes
 [Install Dracula theme for the following applications](https://draculatheme.com/)
 
 * [Terminal](https://draculatheme.com/terminal)
 * [VS Code](https://draculatheme.com/visual-studio-code)
-* [Sublime Text](https://draculatheme.com/sublime)
+    * this should be handled automatically by VS Code Settings Sync
 
 ### Python on Mac
 * [Install from Conda](https://www.anaconda.com/products/distribution)
 * re-bootstrap to remove CONDA cruft from zshrc
 
 ### Mac OS Preferences
+#### Modifier Keys
+* Caps Lock to Control
+
 #### System Preferences
-* Map Caps Lock to Control
 * Map cmd+shift+\ to show notification center
 
 #### Magnet Shortcuts
@@ -75,6 +81,9 @@ Setup a new computer
 
 #### Terminal
 * set font to `Menlo Regular for Powerline` @ 14pt
+
+#### Mail.app
+* "Show most recent messages at the top"
 
 ## Appendix
 ### Github Codespace: use zsh when connecting over ssh

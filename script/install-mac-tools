@@ -8,7 +8,8 @@ then
 else
   echo "    installing: brew"
 
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 function brewinstall () {
@@ -25,3 +26,12 @@ brewinstall "jq"
 brewinstall "jless"
 brewinstall "wget"
 brewinstall "tree"
+brewinstall "gh"
+
+if [ -x "$(command -v psql)" ]
+then
+  echo "    already installed: libpq"
+else
+  echo "    installing: libpq"
+  brew install libpq
+fi
