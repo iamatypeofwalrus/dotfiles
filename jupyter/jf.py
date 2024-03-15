@@ -2,7 +2,7 @@
 import pandas as pd
 import pytz
 
-def jf_parse_time(dt_str):
+def parse_time(dt_str):
     # Separate the datetime string and the timezone part
     dt_naive_str, tz_str = dt_str[:-4], dt_str[-3:]
     
