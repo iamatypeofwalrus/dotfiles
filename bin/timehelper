@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+import sys
+from dateutil import parser
+from dateutil import tz
+import time
+
+# NOTE: working with time sucks. this code assumes that if it is currently DST then the time stamp
+#       passed in was also in DST. For me that's good enough
+
+# what is the current timezone?
+timezones = time.tzname
+
+timezone = None
+if time.daylight == 1:
+    timezone = timezones[1]
+else:
+    timezone = timezones[0]
+
+tz = tz.gettz(timezone)
+
+# get time from command line
+str = sys.argv[1]
+dt = parser.parse(str)
+
+print(
+    dt.astimezone(tz).strftime("%a %b %d %H:%M:%S %Z %Y")
+)
