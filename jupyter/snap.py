@@ -1,3 +1,5 @@
+import pandas as pd
+
 # @title Code: PCS Product Filter Parsing
 # filter.py is a set of functions that operate on product set filters. It is intended to be used with Pandas to help generate
 #           insights into how customers use product set filters e.g. which columns are used most in filters? which operators are used the most?
@@ -337,3 +339,17 @@ def table_v1_catalogs(year_month_day_str):
 
 def table_product_repo(year_month_day_str):
   return f"snapchat-pcs-prod.product_data_for_ranking.products_annotated_{year_month_day_str}"
+
+# Ads Manager
+def parse_am_time(series):
+    s = series.str.replace(' EDT', '').str.replace(' EST', '')
+
+    return pd.to_datetime(s, format='mixed').dt.tz_localize('America/New_York')
+
+def parse_am_excel(file):
+    df = pd.read_excel(file)
+
+    df['Start Time'] = parse_am_time(df['Start Time'])
+    df['End Time'] = parse_am_time(df["End Time"])
+
+    return df
